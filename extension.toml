@@ -1,0 +1,8 @@
+id = "liquid-snippets"
+name = "Shopify Liquid snippets"
+version = "0.0.1"
+schema_version = 1
+authors = ["hcmlopes@gmail.com"]
+description = "A collection of useful snippets for Shopify Theme development."
+repository = "https://github.com/hcmlopes/zed-liquid-snippets"
+snippets = "./snippets/liquid.json"
