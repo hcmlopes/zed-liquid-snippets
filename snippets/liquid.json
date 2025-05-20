@@ -1,14 +1,208 @@
 {
   "{% if %}": {
-    "body": ["{% if ${1:condition} %}", "${2:expression}", "{% endif %}"],
+    "body": [
+      "{% if ${1:condition} %}",
+      "${2:expression}",
+      "{% endif %}",
+      "${0}"
+    ],
     "description": "Renders an expression if a specific condition is true."
   },
   "{% elsif %}": {
-    "body": ["{% elsif ${1:condition} %}", "${2:expression}"],
+    "body": [
+      "{% elsif ${1:condition} %}",
+      "${2:expression}",
+      "${0}"
+    ],
     "description": "You can use the elsif tag to check for multiple conditions."
   },
   "{% else %}": {
-    "body": ["{% else %}", "${1:expression}"],
+    "body": [
+      "{% else %}",
+      "${1:expression}",
+      "${0}"
+    ],
     "description": "Allows you to specify a default expression to execute when no other condition is met."
+  },
+  "{% unless %}": {
+    "body": [
+      "{% unless ${1:condition} %}",
+      "${2:expression}",
+      "{% endunless %}",
+      "${0}"
+    ],
+    "description": "Renders an expression if a specific condition is true."
+  },
+  "{% case %}": {
+    "body": [
+      "{% case ${1:variable} %}",
+      "{% when ${2:first_value} %}",
+      "${3:first_expression}",
+      "{% else %}",
+      "${4:default_expression}",
+      "{% endcase %}",
+      "${0}"
+    ],
+    "description": "Allows you to specify a default expression to execute when no other condition is met."
+  },
+  "{% form %}": {
+    "body": [
+      "{% form '${1:form_type}' %}",
+      "${2:content}",
+      "{% endform %}"
+    ],
+    "description": "Creates a form of the specified type with the given content."
+  },
+  "{% style %}": {
+    "body": [
+      "{% style %}",
+      "${1:CSS_rules}",
+      "{% endstyle %}"
+    ],
+    "description": "Applies CSS rules within the style tags."
+  },
+  "{% for %}": {
+    "body": [
+      "{% for ${1:item} in ${2:collection} %}",
+      "${3:content}",
+      "{% endfor %}"
+    ],
+    "description": "Loops over an array, collection, or range of numbers."
+  },
+  "{% cycle %}": {
+    "body": [
+      "{% cycle ${1:'one'}, ${2:'two'}, ${3:'three'} %}"
+    ],
+    "description": "Loops through a group of strings and outputs them one at a time for each iteration of a for loop."
+  },
+  "{% break %}": {
+    "body": [
+      "{% break %}"
+    ],
+    "description": "Causes the loop to stop iterating when it encounters the break tag."
+  },
+  "{% continue %}": {
+    "body": [
+      "{% continue %}"
+    ],
+    "description": "Causes the loop to skip the current iteration when it encounters the continue tag."
+  },
+  "{% tablerow %}": {
+    "body": [
+      "<table>",
+      "{% tablerow ${1:item} in ${2:collection} %}",
+      "${3:content}",
+      "{% endtablerow %}",
+      "</table>"
+    ],
+    "description": "Generates an HTML table. Must be wrapped in opening <table> and closing </table> HTML tags."
+  },
+  "{% comment %}": {
+    "body": [
+      "{% comment %}",
+      "${1:comment_text}",
+      "{% endcomment %}"
+    ],
+    "description": "Used to add comments in your Liquid code. Comments are not rendered in the output."
+  },
+  "{% raw %}": {
+    "body": [
+      "{% raw %}",
+      "${1:raw_content}",
+      "{% endraw %}"
+    ],
+    "description": "Temporarily disables tag processing. Useful for generating content that uses conflicting syntax."
+  },
+  "{% liquid %}": {
+    "body": [
+      "{% liquid ${1:liquid_code} %}"
+    ],
+    "description": "Used to output the literal Liquid code as text."
+  },
+  "{% assign %}": {
+    "body": [
+      "{% assign ${1:variable_name} = '${2:value}' %}"
+    ],
+    "description": "Creates a new variable."
+  },
+  "{% capture %}": {
+    "body": [
+      "{% capture ${1:variable_name} %}",
+      "${2:content}",
+      "{% endcapture %}"
+    ],
+    "description": "Captures the output inside the block and assigns it to a variable."
+  },
+  "{% increment %}": {
+    "body": [
+      "{% increment ${1:variable_name} %}"
+    ],
+    "description": "Creates a new number variable and increases its value by one every time the increment tag is called."
+  },
+  "{% decrement %}": {
+    "body": [
+      "{% decrement ${1:variable_name} %}"
+    ],
+    "description": "Creates a new number variable and decreases its value by one every time the decrement tag is called."
+  },
+  "{% echo %}": {
+    "body": [
+      "{% echo ${1:expression} %}"
+    ],
+    "description": "Outputs the value of a variable or expression."
+  },
+  "{% content_for 'blocks' %}": {
+    "body": [
+      "{% content_for 'blocks' %}"
+    ],
+    "description": "Creates a designated area that renders theme blocks as configured in the JSON template or section groups, allowing merchants to add, remove, and rearrange blocks using the theme editor."
+  },
+  "{% content_for 'block' %}": {
+    "body": [
+      "{% content_for 'block', type: \"${1:type}\", id: \"${2:id}\" %}"
+    ],
+    "description": "Renders a static theme block of the specified type with the provided ID. You can pass additional arbitrary parameters that will be accessible within the static block."
+  },
+  "{% include %}": {
+    "body": [
+      "{% include '${1:filename}' %}"
+    ],
+    "description": "Renders a snippet. Deprecated because the way that variables are handled reduces performance and makes code harder to both read and maintain. The include tag has been replaced by render."
+  },
+  "{% javascript %}": {
+    "body": [
+      "{% javascript %}\n  ${0:javascript_code}\n{% endjavascript %}"
+    ],
+    "description": "JavaScript code included in section, block and snippet files. Liquid isn't rendered inside of {% javascript %} tags. Including Liquid code can cause syntax errors."
+  },
+  "{% layout %}": {
+    "body": [
+      "{% layout '${1:name}' %}"
+    ],
+    "description": "Specify which layout to use. By default, the theme.liquid layout is used. The layout tag allows you to specify an alternate layout, or use no layout."
+  },
+  "{% render %}": {
+    "body": [
+      "{% render '${1:snippet_name}' %}"
+    ],
+    "description": "Renders a snippet or app block."
+  },
+  "{% section %}": {
+    "body": [
+      "{% section '${1:section_name}' %}"
+    ],
+    "description": "Used to define a section in a Shopify theme. Sections are reusable components that can be added to templates."
+  },
+  "{% sections %}": {
+    "body": [
+      "{% sections %}"
+    ],
+    "description": "Used to render all sections defined in a Shopify theme. This tag is typically used in the theme.liquid layout file."
+  },
+  "{% stylesheet %}": {
+    "body": [
+      "{% stylesheet '${1:stylesheet_name}' %}"
+    ],
+    "description": "Used to include a stylesheet in a Shopify theme. This tag is used to link CSS files to your theme."
   }
 }
