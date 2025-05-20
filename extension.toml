@@ -1,6 +1,6 @@
 id = "liquid-snippets"
 name = "Shopify Liquid snippets"
-version = "0.0.1"
+version = "0.0.2"
 schema_version = 1
 authors = ["Henrique Lopes <hcmlopes@gmail.com>"]
 description = "A collection of useful snippets for Shopify Theme development."
